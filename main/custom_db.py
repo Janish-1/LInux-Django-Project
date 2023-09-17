@@ -60,7 +60,33 @@ def create(id, clas, year, car_type):
         # Close the connection
         conn.close()
 
+def update(id,clas,year,car_type):
+    # Connecting to PostgreSQL
+    conn = psycopg2.connect(
+        database="myproject",
+        host="localhost",
+        user="myprojectuser",
+        password="myproject",
+        port=""
+    )
+
+    try:
+        cursor = conn.cursor()
+        cursor.execute("UPDATE table1 SET class=%s,year=%s,details=%s WHERE ID=%s",(clas,year,car_type,id))
+
+        #Fetching and printing the updated Record
+        cursor.execute("SELECT * FROM table1")
+        print(cursor.fetchall())
+
+        #Commit the transaction
+        conn.commit()
+
+    finally:
+        #Close the COnnection
+        conn.close()
+
 # Calling the function
 # table() # To Create a Table
 # read() # To read a table
 # create(11, "B", "2023", "Hatchback") # Add new row to a table
+# update(11,"A","2023","Hatchback/Offroad")
