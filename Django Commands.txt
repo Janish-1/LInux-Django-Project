@@ -1,0 +1,25 @@
+Create Environment: python -m venv my_env
+
+Start Environment: source my_env/bin/activate
+
+Start Project: django-admin startproject main .
+"cd -" (Previous Directory)
+
+Migrate COmmand: python manage.py migrate
+
+Create Super User: python manage.py createsuperuser
+
+Posgresql DB Commands:
+Access Postgresql: sudo -u postgres psql
+Create Database: CREATE DATABASE 'myproject';
+Create User: CREATE USER 'myprojectuser' WITH PASSWORD 'myproject';
+Alter Role according to Django:
+    ALTER ROLE myprojectuser SET client_encoding TO 'utf8';
+    ALTER ROLE myprojectuser SET default_transaction_isolation TO 'read committed';
+    ALTER ROLE myprojectuser SET timezone TO 'UTC';
+Give all Rights to User: GRANT ALL PRIVILEGES ON DATABASE myproject TO myprojectuser;
+Give Owner to User: ALTER DATABASE myproject OWNER TO myprojectuser;
+Exit Command Line: \q
+
+Allow External Connections: sudo ufw allow 8000 //Automatically Runs on 8000 Port
+Start Development Server: python manage.py runserver 0.0.0.0:8000
