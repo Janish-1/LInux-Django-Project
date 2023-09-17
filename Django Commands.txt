@@ -20,6 +20,7 @@ Alter Role according to Django:
 Give all Rights to User: GRANT ALL PRIVILEGES ON DATABASE myproject TO myprojectuser;
 Give Owner to User: ALTER DATABASE myproject OWNER TO myprojectuser;
 Exit Command Line: \q
+Connect to a database: \c <database name>
 
 Allow External Connections: sudo ufw allow 8000 //Automatically Runs on 8000 Port
 Start Development Server: python manage.py runserver 0.0.0.0:8000
