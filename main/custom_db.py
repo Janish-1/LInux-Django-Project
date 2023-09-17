@@ -85,8 +85,34 @@ def update(id,clas,year,car_type):
         #Close the COnnection
         conn.close()
 
+def delete(id):
+    # Connecting to PostgreSQL
+    conn = psycopg2.connect(
+        database="myproject",
+        host="localhost",
+        user="myprojectuser",
+        password="myproject",
+        port=""
+    )
+
+    try:
+        cursor = conn.cursor()
+        cursor.execute("DELETE FROM table1 WHERE ID=%s",(id,))
+
+        #Fetching and printing the updated Record
+        cursor.execute("SELECT * FROM table1")
+        print(cursor.fetchall())
+
+        #Commit the transaction
+        conn.commit()
+
+    finally:
+        #Close the COnnection
+        conn.close()
+
 # Calling the function
 # table() # To Create a Table
 # read() # To read a table
 # create(11, "B", "2023", "Hatchback") # Add new row to a table
 # update(11,"A","2023","Hatchback/Offroad")
+# delete(11)
